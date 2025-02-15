@@ -1,4 +1,4 @@
-package com.example.prographysubject.data.di
+package com.example.prographysubject.data.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module

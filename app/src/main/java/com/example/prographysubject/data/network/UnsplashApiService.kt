@@ -1,4 +1,4 @@
-package com.example.prographysubject.data.di
+package com.example.prographysubject.data.network
 
 import PhotoCollectionDto
 import retrofit2.http.GET

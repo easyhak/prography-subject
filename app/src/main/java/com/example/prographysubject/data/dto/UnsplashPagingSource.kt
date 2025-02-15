@@ -3,7 +3,7 @@ package com.example.prographysubject.data.dto
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.prographysubject.data.di.UnsplashApiService
+import com.example.prographysubject.data.network.UnsplashApiService
 import com.example.prographysubject.domain.model.PhotoCollection
 import toDomain
 
