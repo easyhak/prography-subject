@@ -8,9 +8,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.unit.dp
 
 data class NavigationItem(
     val icon: ImageVector,
@@ -21,8 +19,6 @@ data class NavigationItem(
 @Composable
 fun HomeBottomNavigation(items: List<NavigationItem>) {
     BottomAppBar (
-        tonalElevation = 10.dp,
-        containerColor = Color.White,
         contentColor = MaterialTheme.colorScheme.primary
     ) {
 

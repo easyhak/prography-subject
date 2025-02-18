@@ -27,7 +27,7 @@ data class PhotoCollectionDto(
     val color: String,
 
     @SerialName("blur_hash")
-    val blurHash: String,
+    val blurHash: String? = null,
 
     val description: JsonElement? = null,
 
@@ -36,7 +36,6 @@ data class PhotoCollectionDto(
 
     val breadcrumbs: JsonArray,
     val urls: Urls,
-    val links: WelcomeLinks,
     val likes: Long,
 
     @SerialName("liked_by_user")
@@ -46,10 +45,6 @@ data class PhotoCollectionDto(
     val currentUserCollections: JsonArray,
 
     val sponsorship: JsonElement? = null,
-
-
-    @SerialName("asset_type")
-    val assetType: AssetType,
 
     val user: User,
 
@@ -61,31 +56,17 @@ data class PhotoCollectionDto(
 
 @Serializable
 data class AlternativeSlugs(
-    val en: String,
-    val es: String,
-    val ja: String,
-    val fr: String,
-    val it: String,
-    val ko: String,
-    val de: String,
-    val pt: String
+    val en: String? = null,
+    val es: String? = null,
+    val ja: String? = null,
+    val fr: String? = null,
+    val it: String? = null,
+    val ko: String? = null,
+    val de: String? = null,
+    val pt: String? = null,
 )
 
-@Serializable
-enum class AssetType(val value: String) {
-    @SerialName("photo")
-    Photo("photo");
-}
 
-@Serializable
-data class WelcomeLinks(
-    val self: String,
-    val html: String,
-    val download: String,
-
-    @SerialName("download_location")
-    val downloadLocation: String
-)
 
 @Serializable
 data class RelatedCollections(
@@ -120,7 +101,6 @@ data class Result(
     val shareKey: String,
 
     val tags: List<Tag>,
-    val links: ResultLinks,
     val user: User,
 
     @SerialName("cover_photo")
@@ -145,23 +125,22 @@ data class CoverPhoto(
     val updatedAt: String,
 
     @SerialName("promoted_at")
-    val promotedAt: String,
+    val promotedAt: String? = null,
 
     val width: Long,
     val height: Long,
     val color: String,
 
     @SerialName("blur_hash")
-    val blurHash: String,
+    val blurHash: String? = null,
 
-    val description: String,
+    val description: String? = null,
 
     @SerialName("alt_description")
     val altDescription: String? = null,
 
     val breadcrumbs: JsonArray,
     val urls: Urls,
-    val links: WelcomeLinks,
     val likes: Long,
 
     @SerialName("liked_by_user")
@@ -171,9 +150,6 @@ data class CoverPhoto(
     val currentUserCollections: JsonArray,
 
     val sponsorship: JsonElement? = null,
-
-    @SerialName("asset_type")
-    val assetType: AssetType,
 
     val user: User
 )
@@ -234,12 +210,6 @@ data class User(
 
     @SerialName("total_promoted_photos")
     val totalPromotedPhotos: Long,
-
-    @SerialName("total_illustrations")
-    val totalIllustrations: Long,
-
-    @SerialName("total_promoted_illustrations")
-    val totalPromotedIllustrations: Long,
 
     @SerialName("accepted_tos")
     val acceptedTos: Boolean,
@@ -303,10 +273,7 @@ data class PreviewPhoto(
     val updatedAt: String,
 
     @SerialName("blur_hash")
-    val blurHash: String,
-
-    @SerialName("asset_type")
-    val assetType: AssetType,
+    val blurHash: String? = null,
 
     val urls: Urls
 )

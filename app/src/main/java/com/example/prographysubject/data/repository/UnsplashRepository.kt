@@ -7,6 +7,7 @@ import com.example.prographysubject.data.network.UnsplashApiService
 import com.example.prographysubject.data.dto.UnsplashPagingSource
 import com.example.prographysubject.domain.model.PhotoCollection
 import kotlinx.coroutines.flow.Flow
+import toDomain
 import javax.inject.Inject
 
 class UnsplashRepository @Inject constructor(
@@ -19,5 +20,9 @@ class UnsplashRepository @Inject constructor(
             ),
             pagingSourceFactory = { UnsplashPagingSource(unsplashApiService = apiService) }
         ).flow
+    }
+
+    suspend fun getPhotoById(photoId: String): PhotoCollection {
+        return apiService.getPhotoById(photoId).toDomain()
     }
 }
