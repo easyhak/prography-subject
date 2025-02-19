@@ -94,4 +94,7 @@ dependencies {
     implementation(libs.retrofit2.kotlinx.serialization.converter) // serialization converter
     implementation(libs.logging.interceptor)
 
+    // datastore
+    implementation(libs.androidx.datastore.preferences)
+
 }
