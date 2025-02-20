@@ -40,4 +40,10 @@ class BookmarkDataStore @Inject constructor(
             photoId in bookmarks
         }
     }
+
+    fun getBookmarkedPhotos(): Flow<Set<String>> {
+        return dataStore.data.map { preferences ->
+            preferences[BOOKMARKED_PHOTOS] ?: emptySet()
+        }
+    }
 }
