@@ -100,7 +100,7 @@ data class Result(
     @SerialName("share_key")
     val shareKey: String,
 
-    val tags: List<Tag>,
+    val tags: List<Tag> = emptyList(),
     val user: User,
 
     @SerialName("cover_photo")
@@ -280,15 +280,10 @@ data class PreviewPhoto(
 
 @Serializable
 data class Tag(
-    val type: Type,
+    val type: String,
     val title: String
 )
 
-@Serializable
-enum class Type(val value: String) {
-    @SerialName("search")
-    Search("search");
-}
 
 
 fun PhotoCollectionDto.toDomain(): PhotoCollection {
