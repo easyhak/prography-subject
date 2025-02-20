@@ -97,4 +97,7 @@ dependencies {
     // datastore
     implementation(libs.androidx.datastore.preferences)
 
+    // shimmer
+    implementation(libs.compose.shimmer)
+
 }
