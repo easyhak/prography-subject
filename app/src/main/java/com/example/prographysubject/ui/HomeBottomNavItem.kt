@@ -1,17 +1,17 @@
 package com.example.prographysubject.ui
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.SdCard
+import androidx.annotation.DrawableRes
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.painterResource
 
 data class NavigationItem(
-    val icon: ImageVector,
+    @DrawableRes val icon: Int,
     val onClick: () -> Unit,
     val isSelected: Boolean,
 )
@@ -19,33 +19,21 @@ data class NavigationItem(
 @Composable
 fun HomeBottomNavigation(items: List<NavigationItem>) {
     BottomAppBar (
-        contentColor = MaterialTheme.colorScheme.primary
+        containerColor = Color(0xFF222222),
     ) {
-
         items.forEach { item ->
             NavigationBarItem(
                 icon = {
                     Icon(
-                        imageVector = item.icon,
+                        painter = painterResource(id = item.icon),
                         contentDescription = null,
+                        tint = Color(0xFFFFFFFF),
+                        modifier = Modifier.graphicsLayer(alpha = if (item.isSelected) 1f else 0.3f)
                     )
                 },
                 onClick = item.onClick,
-                selected = item.isSelected,
+                selected = false,
             )
         }
     }
-}
-
-
-sealed class HomeBottomNavItem(
-    val icon: ImageVector,
-) {
-    data object MyDream : HomeBottomNavItem(
-        icon = Icons.Filled.Home,
-    )
-
-    data object Community : HomeBottomNavItem(
-        icon = Icons.Filled.SdCard,
-    )
 }

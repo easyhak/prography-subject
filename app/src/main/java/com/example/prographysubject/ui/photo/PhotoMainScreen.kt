@@ -37,7 +37,6 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.prographysubject.R
 import com.example.prographysubject.domain.model.PhotoCollection
-import com.example.prographysubject.ui.HomeBottomNavItem
 import com.example.prographysubject.ui.HomeBottomNavigation
 import com.example.prographysubject.ui.NavigationItem
 import com.example.prographysubject.ui.photo.components.BookmarkCollectionItem
@@ -46,6 +45,7 @@ import com.example.prographysubject.ui.photo.components.ShimmerEffect
 
 @Composable
 fun PhotoMainScreen(
+    onRandomPhotoClick: () -> Unit,
     onDetailClick: (String) -> Unit,
     viewModel: PhotoMainViewModel = hiltViewModel()
 ) {
@@ -54,6 +54,7 @@ fun PhotoMainScreen(
     val bookmarkedPhotos by viewModel.bookmarkedPhotos.collectAsStateWithLifecycle()
 
     CommunityHomeScreen(
+        onRandomPhotoClick = onRandomPhotoClick,
         onDetailClick = onDetailClick,
         photoCollections = photoCollections,
         bookmarkedPhotos = bookmarkedPhotos
@@ -63,6 +64,7 @@ fun PhotoMainScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CommunityHomeScreen(
+    onRandomPhotoClick: () -> Unit,
     onDetailClick: (String) -> Unit,
     photoCollections: LazyPagingItems<PhotoCollection>,
     bookmarkedPhotos: List<PhotoCollection>
@@ -70,14 +72,14 @@ private fun CommunityHomeScreen(
 
     val navigationItems = listOf(
         NavigationItem(
-            icon = HomeBottomNavItem.MyDream.icon,
+            icon = R.drawable.ic_house,
             isSelected = true,
             onClick = {},
         ),
         NavigationItem(
-            icon = HomeBottomNavItem.Community.icon,
+            icon = R.drawable.ic_cards,
             isSelected = false,
-            onClick = {},
+            onClick = onRandomPhotoClick,
         ),
     )
 
