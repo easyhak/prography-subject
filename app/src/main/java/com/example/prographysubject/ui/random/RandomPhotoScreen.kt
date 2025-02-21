@@ -233,8 +233,8 @@ private fun RandomCardItemContent(
                         .build(),
                     contentDescription = "Profile Image",
                     modifier = Modifier
-                        .aspectRatio(photo.imageSize.width.toFloat() / photo.imageSize.height.toFloat())
                         .fillMaxWidth()
+                        .aspectRatio(photo.imageSize.width.toFloat() / photo.imageSize.height.toFloat())
                 )
             }
         }
