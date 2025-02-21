@@ -1,9 +1,11 @@
 package com.example.prographysubject.ui.photo
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
@@ -37,7 +40,6 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.prographysubject.domain.model.ImageSize
 import com.example.prographysubject.domain.model.PhotoCollection
-import com.example.prographysubject.ui.photo.uistate.PhotoDetailUiState
 
 @Composable
 fun PhotoDetailScreen(
@@ -47,8 +49,13 @@ fun PhotoDetailScreen(
 
     when (uiState) {
         is PhotoDetailUiState.Loading -> {
-            // 가운대로 이동하거나 shimmer 만들기
-            CircularProgressIndicator()
+            // todo shimmer 구현
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
         }
 
         is PhotoDetailUiState.Error -> {

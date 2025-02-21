@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.prographysubject.data.datastore.BookmarkDataStore
 import com.example.prographysubject.domain.usecase.GetPhotoDetailUseCase
-import com.example.prographysubject.ui.photo.uistate.PhotoDetailUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

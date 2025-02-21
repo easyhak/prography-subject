@@ -1,4 +1,4 @@
-package com.example.prographysubject.ui.photo.uistate
+package com.example.prographysubject.ui.photo
 
 import com.example.prographysubject.domain.model.PhotoCollection
 
