@@ -28,6 +28,9 @@ class PhotoMainViewModel @Inject constructor(
     private val _bookmarkedPhotos = MutableStateFlow<List<PhotoCollection>>(emptyList())
     val bookmarkedPhotos = _bookmarkedPhotos.asStateFlow()
 
+    private val _isLoading = MutableStateFlow(true)
+    val isLoading = _isLoading.asStateFlow()
+
     init {
         loadBookmarkedPhotos()
     }
@@ -35,18 +38,24 @@ class PhotoMainViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun loadBookmarkedPhotos() {
         viewModelScope.launch {
-            bookmarkDataStore.getBookmarkedPhotos()
-                .flatMapLatest { ids ->
-                    flow {
-                        val photos = ids.mapNotNull { id ->
-                            runCatching { getPhotoDetailUseCase(id) }.getOrNull()
+            try {
+                _isLoading.value = true
+                bookmarkDataStore.getBookmarkedPhotos()
+                    .flatMapLatest { ids ->
+                        flow {
+                            val photos = ids.mapNotNull { id ->
+                                runCatching { getPhotoDetailUseCase(id) }.getOrNull()
+                            }
+                            emit(photos)
                         }
-                        emit(photos)
                     }
-                }
-                .collectLatest { bookmarkedPhotos ->
-                    _bookmarkedPhotos.value = bookmarkedPhotos
-                }
+                    .collectLatest { bookmarkedPhotos ->
+                        _bookmarkedPhotos.value = bookmarkedPhotos
+                        _isLoading.value = false
+                    }
+            } catch (e: Exception) {
+                _isLoading.value = false
+            }
         }
     }
 }

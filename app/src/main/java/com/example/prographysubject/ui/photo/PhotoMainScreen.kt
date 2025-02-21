@@ -52,12 +52,14 @@ fun PhotoMainScreen(
 
     val photoCollections = viewModel.photoCollections.collectAsLazyPagingItems()
     val bookmarkedPhotos by viewModel.bookmarkedPhotos.collectAsStateWithLifecycle()
-
+    // todo uiState 사용하기
+    val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
     CommunityHomeScreen(
         onRandomPhotoClick = onRandomPhotoClick,
         onDetailClick = onDetailClick,
         photoCollections = photoCollections,
-        bookmarkedPhotos = bookmarkedPhotos
+        bookmarkedPhotos = bookmarkedPhotos,
+        isLoading = isLoading
     )
 }
 
@@ -67,7 +69,8 @@ private fun CommunityHomeScreen(
     onRandomPhotoClick: () -> Unit,
     onDetailClick: (String) -> Unit,
     photoCollections: LazyPagingItems<PhotoCollection>,
-    bookmarkedPhotos: List<PhotoCollection>
+    bookmarkedPhotos: List<PhotoCollection>,
+    isLoading: Boolean
 ) {
 
     val navigationItems = listOf(
@@ -111,7 +114,7 @@ private fun CommunityHomeScreen(
         ) {
             // 중복 많은건 나중에 리팩토링하기
             // Shimmer Effect
-            if (bookmarkedPhotos.isEmpty()) {
+            if (isLoading && bookmarkedPhotos.isEmpty()) {
                 item(span = StaggeredGridItemSpan.FullLine) {
                     Column {
                         Text(
@@ -138,14 +141,14 @@ private fun CommunityHomeScreen(
                 }
             }
             // 아이템 보여주기
-            else {
+            else if (!isLoading && bookmarkedPhotos.isNotEmpty()) {
                 item(span = StaggeredGridItemSpan.FullLine) {
                     Column {
                         Text(
                             text = "북마크한 사진",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(bottom = 8.dp)
+                            modifier = Modifier.padding(horizontal = 10.dp).padding(bottom = 8.dp)
                         )
                         Row(
                             modifier = Modifier
