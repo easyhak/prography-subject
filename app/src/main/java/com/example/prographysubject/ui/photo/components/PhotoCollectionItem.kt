@@ -5,8 +5,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -29,7 +33,7 @@ fun PhotoCollectionItem(photo: PhotoCollection, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .aspectRatio(photo.imageSize.width.toFloat() / photo.imageSize.height.toFloat()) // 원본 비율 유지
+            .aspectRatio(photo.imageSize.width.toFloat() / photo.imageSize.height.toFloat())
             .clip(RoundedCornerShape(10.dp))
     ) {
         if (isPreview) {
@@ -49,5 +53,15 @@ fun PhotoCollectionItem(photo: PhotoCollection, modifier: Modifier = Modifier) {
                 modifier = Modifier.fillMaxSize()
             )
         }
+        Text(
+            text = photo.description,
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .padding(8.dp),
+            maxLines = 2,
+            style = MaterialTheme.typography.bodyMedium.copy(
+                color = MaterialTheme.colorScheme.surface
+            )
+        )
     }
 }
