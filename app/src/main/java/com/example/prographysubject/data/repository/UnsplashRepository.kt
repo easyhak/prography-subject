@@ -25,4 +25,8 @@ class UnsplashRepository @Inject constructor(
     suspend fun getPhotoById(photoId: String): PhotoCollection {
         return apiService.getPhotoById(photoId).toDomain()
     }
+
+    suspend fun getRandomPhoto(): PhotoCollection {
+        return apiService.getRandomPhoto().toDomain()
+    }
 }

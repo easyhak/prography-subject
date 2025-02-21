@@ -14,4 +14,7 @@ interface UnsplashApiService {
 
     @GET("photos/{id}")
     suspend fun getPhotoById(@Path("id") photoId: String): PhotoCollectionDto
+
+    @GET("/photos/random")
+    suspend fun getRandomPhoto(): PhotoCollectionDto
 }
