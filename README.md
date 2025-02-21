@@ -30,14 +30,18 @@
 - 느낌표 클릭시 상세페이지 이동
 
 ### 결과
-<img src="https://github.com/user-attachments/assets/019cd237-f268-464a-9bb7-97b91a81a602" width="300" />
-<img src="https://github.com/user-attachments/assets/88bc91ec-f1d6-4966-b755-80d135795d1c" width="300" />
-<img src="https://github.com/user-attachments/assets/b81df279-3acd-48c9-be18-98619f94042a" width="300" />
-<img src="https://github.com/user-attachments/assets/d5cfe610-1b97-405f-8212-a82f3f14a34c" width="300" />
-<img src="https://github.com/user-attachments/assets/cabc8590-30b2-4d19-888e-07192c604f1f" width="300" />
-<img src="https://github.com/user-attachments/assets/6680024f-29ef-4220-8b69-d8eb4ba116de" width="300" />
-<img src="https://github.com/user-attachments/assets/9cb52f40-f567-40a9-adcb-2c2757d6ac84" width="300" />
+<img src="https://github.com/user-attachments/assets/e0c8cfdc-398b-428a-bd5a-6693d93ac3c8" width="300" />
+<img src="https://github.com/user-attachments/assets/4f1c0ca7-3b4e-4274-b92b-851c1b22d737" width="300" />
+<img src="https://github.com/user-attachments/assets/98c976e1-a022-4080-9b47-e0e1a12fb7d5" width="300" />
+<img src="https://github.com/user-attachments/assets/e22a24ee-2f19-4c07-ba9c-8eb24c299001" width="300" />
+<img src="https://github.com/user-attachments/assets/1e6d6ab6-6df4-413a-9e19-533fc6723fc7" width="300" />
+<img src="https://github.com/user-attachments/assets/fb639f6c-dba3-436e-b6eb-15ce753b6c0c" width="300" />
+<img src="https://github.com/user-attachments/assets/502b7f76-0327-407b-9a6b-7736df839879" width="300" />
+<img src="https://github.com/user-attachments/assets/d3651615-dcee-4770-a071-d58279a42749" width="300" />
 
 
-https://github.com/user-attachments/assets/3d13ac5f-9dfd-463d-b462-882817d26c7d
+
+
+https://github.com/user-attachments/assets/df0820d2-5890-4d3e-b162-d25ff9eec164
+
 
