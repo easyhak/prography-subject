@@ -1,5 +1,6 @@
-package com.example.prographysubject.data.network
+package com.example.prographysubject.di
 
+import com.example.prographysubject.data.network.UnsplashApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
