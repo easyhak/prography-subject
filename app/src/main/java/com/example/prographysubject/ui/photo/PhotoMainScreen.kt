@@ -52,12 +52,14 @@ fun PhotoMainScreen(
 
     val photoCollections = viewModel.photoCollections.collectAsLazyPagingItems()
     val bookmarkedPhotos by viewModel.bookmarkedPhotos.collectAsStateWithLifecycle()
+    val isBookMarkedPhotosLoading by viewModel.isBookMarkedPhotosLoading.collectAsStateWithLifecycle()
 
     CommunityHomeScreen(
         onRandomPhotoClick = onRandomPhotoClick,
         onDetailClick = onDetailClick,
         photoCollections = photoCollections,
-        bookmarkedPhotos = bookmarkedPhotos
+        bookmarkedPhotos = bookmarkedPhotos,
+        isBookMarkedPhotosLoading = isBookMarkedPhotosLoading
     )
 }
 
@@ -67,7 +69,8 @@ private fun CommunityHomeScreen(
     onRandomPhotoClick: () -> Unit,
     onDetailClick: (String) -> Unit,
     photoCollections: LazyPagingItems<PhotoCollection>,
-    bookmarkedPhotos: List<PhotoCollection>
+    bookmarkedPhotos: List<PhotoCollection>,
+    isBookMarkedPhotosLoading: Boolean
 ) {
 
     val navigationItems = listOf(
@@ -111,7 +114,7 @@ private fun CommunityHomeScreen(
         ) {
             // 중복 많은건 나중에 리팩토링하기
             // Shimmer Effect
-            if (bookmarkedPhotos.isEmpty()) {
+            if (bookmarkedPhotos.isEmpty() && isBookMarkedPhotosLoading) {
                 item(span = StaggeredGridItemSpan.FullLine) {
                     Column {
                         Text(
@@ -138,7 +141,7 @@ private fun CommunityHomeScreen(
                 }
             }
             // 아이템 보여주기
-            else {
+            else if (bookmarkedPhotos.isNotEmpty() && !isBookMarkedPhotosLoading) {
                 item(span = StaggeredGridItemSpan.FullLine) {
                     Column {
                         Text(
